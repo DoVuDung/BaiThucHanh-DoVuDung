@@ -1,0 +1,179 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="MasterPage.master.cs" Inherits="BaiThucHanh_DoVuDung.MasterPage" %>
+
+
+
+<html>
+<head runat="server">
+	<title>Kiehl's 1851</title>
+	<link rel="preconnect" href="https://fonts.gstatic.com">
+	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
+    <link href="https://img.icons8.com/dusk/64/000000/perfume-bottle.png" rel="icon">
+    <style>
+        /* http://meyerweb.com/eric/tools/css/reset/ 
+		   v2.0 | 20110126
+		   License: none (public domain)
+		*/
+		/*Begin: Reset css*/
+		html, body, div, span, applet, object, iframe,
+		h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+		a, abbr, acronym, address, big, cite, code,
+		del, dfn, em, img, ins, kbd, q, s, samp,
+		small, strike, strong, sub, sup, tt, var,
+		b, u, i, center,
+		dl, dt, dd, ol, ul, li,
+		fieldset, form, label, legend,
+		table, caption, tbody, tfoot, thead, tr, th, td,
+		article, aside, canvas, details, embed, 
+		figure, figcaption, footer, header, hgroup, 
+		menu, nav, output, ruby, section, summary,
+		time, mark, audio, video {
+			margin: 0;
+			padding: 0;
+			border: 0;
+			font-size: 100%;
+			font: inherit;
+			vertical-align: baseline;
+		}
+		/* HTML5 display-role reset for older browsers */
+		article, aside, details, figcaption, figure, 
+		footer, header, hgroup, menu, nav, section {
+			display: block;
+		}
+		body {
+			line-height: 1;
+		}
+		ol, ul {
+			list-style: none;
+		}
+		blockquote, q {
+			quotes: none;
+		}
+		blockquote:before, blockquote:after,
+		q:before, q:after {
+			content: '';
+			content: none;
+		}
+		table {
+			border-collapse: collapse;
+			border-spacing: 0;
+		}
+		/*End: Reset css*/
+		a{
+			text-decoration:none;
+			cursor:pointer;
+		}
+		.header{
+			position:fixed;
+			display: flex; 
+			background-color: #000;
+			padding-left: 48px;
+			width:100%;
+			top: 0;
+			left: 0;
+			right: 0;
+		}
+		.header--logo{
+			float: right;
+		}
+		.header--logo__logo{
+			width:240px; 
+			padding: 8px 16px; 
+		}
+		.header__items{
+			 display:flex; 
+			 align-items:center;
+			 padding:0 48px;
+			 font-family: 'Roboto', sans-serif;
+		}
+		.header__items > p > a{
+			color:white; 
+			font-size:16px; 
+			padding: 8px 16px;
+			text-transform: uppercase;
+
+		}
+		.body{
+			width: 80%; 
+			margin:  64px 0;
+			
+		}
+		.footer{
+
+			background-color: #000;
+			position:absolute;
+			
+			
+		}
+		footer__banner,
+		.footer__banner--center__logo{
+			display:flex;
+			justify-content:center;
+			align-items:center;
+			
+		}
+		.footer__banner--center__logo > img{
+			width:100%;
+		}
+		
+		.social-list, .copy-right  {
+			color: white;
+			font-size: 16px;
+			display:flex;
+			justify-content:center;
+			padding-bottom: 8px;
+		}
+		.copy-right{
+			font-family: 'Open Sans', sans-serif;
+		}
+
+		.copy-right a {
+			color:white;
+			font-family: 'Dancing Script', cursive;
+			padding-left: 8px;
+		}
+		
+		
+    </style>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+	<div class="header" >
+		<div class="header--logo" >
+			<a href="TrangDanhMuc.aspx">
+				<img class="header--logo__logo" src="HinhAnh/logo.png" alt="logo" />
+			</a>
+         </div>
+		 <div class="header__items col-">
+			<asp:Repeater ID="rptMenu" runat="server">
+                <ItemTemplate>
+                    <p >
+                        <a  href="TrangDanhMuc.aspx?idDanhMuc=<%# Eval("IDDANHMUC") %>">
+                            <%# Eval("TENDANHMUC") %>
+                        </a>
+                    </p>
+                </ItemTemplate>
+            </asp:Repeater>
+         </div>
+	</div>
+    <div class="body">
+		<asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">            
+        </asp:ContentPlaceHolder>        
+    </div>
+    <div class="footer">
+        <div class="footer__banner">
+           <div class="footer__banner--center__logo">
+              <img src="HinhAnh/footer2.jpg" alt="logo" />
+            </div>
+			<div class="social-list">
+				<p class="copy-right">Powered by
+					<a href="https://github.com/DoVuDung">Andy Do</a>
+				</p> 
+			</div>
+        </div>
+		
+    </div>
+</body>
+</html>
